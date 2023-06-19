@@ -2,7 +2,7 @@ version: '3.0'
 
 services:
    db:
-     image: public.ecr.aws/lts/mysql:latest
+     image: mysql:5.7
      environment:
        MYSQL_RANDOM_ROOT_PASSWORD: 1
        MYSQL_DATABASE: accountowner
