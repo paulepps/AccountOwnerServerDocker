@@ -1,0 +1,20 @@
+
+{
+    "region" : "us-east-1",
+    "configuration" : "Debug",
+    "framework"     : "netcoreapp3.1",
+    "self-contained" : false,
+    "application"    : "AccountOwnerServer",
+    "environment"    : "AccountOwnerServer-dev",
+    "enable-xray"    : false,
+    "enhanced-health-type" : "basic",
+    "additional-options"   : "\"aws:autoscaling:launchconfiguration,SecurityGroups\"=\"sg-0006669a4984c743a,sg-081c9ec01af6a567f\";\"aws:ec2:vpc,Subnets\"=\"subnet-045a58233702f1bda,subnet-0cfa95a0b6a5f53e0,subnet-064362738ec43c9f5,subnet-0a8f699fac643ef15,subnet-0a94ba96270c39b5c,subnet-0214b15bac21aa6f6\"",
+    "solution-stack"       : "64bit Amazon Linux 2 v2.5.4 running .NET Core",
+    "environment-type"     : "SingleInstance",
+    "cname"                : "accountownerserver-dev",
+    "instance-type"        : "t2.micro",
+    "key-pair"             : "accountowner",
+    "instance-profile"     : "aws-elasticbeanstalk-AccountOwnerServer-dev",
+    "service-role"         : "aws-elasticbeanstalk-service-role",
+    "proxy-server"         : "nginx"
+}

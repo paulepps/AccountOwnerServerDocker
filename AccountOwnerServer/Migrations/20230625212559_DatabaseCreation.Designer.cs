@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccountOwnerServer.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20230619041336_InitialData2")]
-    partial class InitialData2
+    [Migration("20230625212559_DatabaseCreation")]
+    partial class DatabaseCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,6 +18,54 @@ namespace AccountOwnerServer.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("Entities.Models.Owner", b =>
+            {
+                b.Property<Guid>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("OwnerId")
+                    .HasColumnType("char(36)");
+
+                b.Property<string>("Address")
+                    .IsRequired()
+                    .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
+                    .HasMaxLength(100);
+
+                b.Property<DateTime>("DateOfBirth")
+                    .HasColumnType("datetime(6)");
+
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("varchar(60) CHARACTER SET utf8mb4")
+                    .HasMaxLength(60);
+
+                b.HasKey("Id");
+
+                b.ToTable("owner");
+
+                b.HasData(
+                    new
+                    {
+                        Id = new Guid("24fd81f8-d58a-4bcc-9f35-dc6cd5641906"),
+                        Address = "61 Wellfield Road",
+                        DateOfBirth = new DateTime(1980, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                        Name = "John Keen"
+                    },
+                    new
+                    {
+                        Id = new Guid("261e1685-cf26-494c-b17c-3546e65f5620"),
+                        Address = "27 Rainbow Row",
+                        DateOfBirth = new DateTime(1974, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                        Name = "Anna Bosh"
+                    },
+                    new
+                    {
+                        Id = new Guid("66774006-2371-4d5b-8518-2177bcf3f73e"),
+                        Address = "North Sunny Address 102",
+                        DateOfBirth = new DateTime(1998, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                        Name = "Nick Somion"
+                    });
+            });
 
             modelBuilder.Entity("Entities.Models.Account", b =>
                 {
@@ -77,54 +125,6 @@ namespace AccountOwnerServer.Migrations
                             AccountType = "Domestic",
                             DateCreated = new DateTime(2010, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OwnerId = new Guid("a3c1880c-674c-4d18-8f91-5d3608a2c937")
-                        });
-                });
-
-            modelBuilder.Entity("Entities.Models.Owner", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("OwnerId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("varchar(60) CHARACTER SET utf8mb4")
-                        .HasMaxLength(60);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("owner");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("24fd81f8-d58a-4bcc-9f35-dc6cd5641906"),
-                            Address = "61 Wellfield Road",
-                            DateOfBirth = new DateTime(1980, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "John Keen"
-                        },
-                        new
-                        {
-                            Id = new Guid("261e1685-cf26-494c-b17c-3546e65f5620"),
-                            Address = "27 Rainbow Row",
-                            DateOfBirth = new DateTime(1974, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Anna Bosh"
-                        },
-                        new
-                        {
-                            Id = new Guid("66774006-2371-4d5b-8518-2177bcf3f73e"),
-                            Address = "North Sunny Address 102",
-                            DateOfBirth = new DateTime(1998, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Nick Somion"
                         });
                 });
 
